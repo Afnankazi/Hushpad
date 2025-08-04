@@ -1,6 +1,6 @@
 import React from "react";
 import { TypewriterEffect } from "./ui/typewriter-effect";
-
+import CardSpot from "../Components/CardSpot"
 const Heading = () => {
   const words = [
     {
@@ -28,12 +28,13 @@ const Heading = () => {
   ];
   return (
     <div className="w-full z-50">
-      <div className="flex flex-col items-center justify-center h-[30rem] ">
+      <div className="flex flex-col items-center justify-center h-[21rem] ">
         <p className=" dark:text-neutral-200 text-base  mb-10">
           The #1 Secure note-taking app
         </p>
         <TypewriterEffect words={words} />
       </div>
+        
     </div>
   );
 };
