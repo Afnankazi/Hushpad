@@ -28,7 +28,7 @@ interface NavItemsProps {
     link: string;
   }[];
   className?: string;
-  onItemClick?: () => void;
+  onNavigate: (link: string) => void;
 }
 
 interface MobileNavProps {
@@ -113,7 +113,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   );
 };
 
-export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
+export const NavItems = ({ items, className, onNavigate }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
@@ -125,12 +125,11 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <span
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+          onClick={() => onNavigate(item.link)}
+          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 cursor-pointer"
           key={`link-${idx}`}
-          href={item.link}
         >
           {hovered === idx && (
             <motion.div
@@ -139,7 +138,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             />
           )}
           <span className="relative z-20">{item.name}</span>
-        </a>
+        </span>
       ))}
     </motion.div>
   );
