@@ -11,17 +11,16 @@ import {
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 
-export default function LoginForm({
+export default function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-
-  const nav = useNavigate();
+  const nav = useNavigate()
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6 mt-12", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>Sign up</CardTitle>
         </CardHeader>
         <CardContent>
           <form>
@@ -35,19 +34,27 @@ export default function LoginForm({
                   required
                 />
               </div>
-              
+               <div className="grid gap-3">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
+                </div>
+                <Input id="password" type="password" required />
+
+                <div className="flex items-center">
+                  <Label htmlFor="Confirm_Password">Confirm Password</Label>
                 </div>
                 <Input id="password" type="password" required />
               </div>
+              
               <div className="flex flex-col gap-3">
                 <Button type="submit" className="w-full">
                   Login
@@ -64,8 +71,8 @@ export default function LoginForm({
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-               <span onClick={()=>nav("/signup")} className="underline underline-offset-4">
+               have an account?{" "}
+              <span onClick={()=>nav("/login")} className="underline underline-offset-4">
                 Sign up
               </span>
             </div>
