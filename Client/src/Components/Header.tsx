@@ -26,7 +26,7 @@ export default function NavbarDemo() {
   ];
   const navItemsLogin = [
     { name: "My Notes", link: "/notes" },
-    { name: "Create Notes", link: "/create" },
+    { name: "Create Notes", link: "/create-notes" },
     { name: "Profile", link: "/profile" },
   ];
   const navItemsAdmin = [{ name: "admin", link: "/admin" }];

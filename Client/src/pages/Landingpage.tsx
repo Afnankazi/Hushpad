@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../Components/Header";
 import Heading from "../Components/Heading";
 import CardSpot from "../Components/CardSpot";
 
@@ -7,7 +6,7 @@ const Landingpage = () => {
   return (
     <div className="h-[200vh] bg-black">
       <Heading />
-      <div className="flex gap-6 w-full justify-center">
+      <div className="flex flex-col lg:flex-row  gap-6 w-full justify-center">
         <CardSpot />
       </div>
     </div>

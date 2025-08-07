@@ -1,0 +1,49 @@
+/* CreateNote.css */
+
+/* Main container for the editor */
+.ql-container {
+  border: 1px solid #4a4a4a !important; /* Custom border color */
+  border-radius: 0 0 8px 8px;
+}
+
+/* The editing area itself */
+.ql-editor {
+  min-height: 200px; /* Give it some default height */
+  background-color: #1a1a1a; /* Dark background for typing area */
+  color: white; /* White text */
+  border: none !important;
+  font-size: 1rem;
+}
+
+/* The toolbar */
+.ql-toolbar {
+  background-color: #111; /* Dark background for the toolbar */
+  border: 1px solid #4a4a4a !important;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Toolbar icons (e.g., Bold, Italic) */
+.ql-snow .ql-stroke {
+  stroke: #c4c4c4 !important; /* Change icon color */
+}
+
+/* Toolbar icon fills (e.g., background color picker) */
+.ql-snow .ql-fill {
+  fill: #c4c4c4 !important;
+}
+
+/* Dropdown arrows and other small icons */
+.ql-snow .ql-picker-label::before {
+  color: #c4c4c4 !important;
+}
+
+/* Active/selected toolbar button */
+.ql-snow .ql-active .ql-stroke {
+  stroke: #00aaff !important; /* A bright color for active state */
+}
+
+/* Placeholder text color */
+.ql-editor.ql-blank::before {
+  color: #666; /* Lighter placeholder text */
+  font-style: normal;
+}
