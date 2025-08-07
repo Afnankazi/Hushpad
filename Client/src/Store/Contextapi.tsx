@@ -17,7 +17,7 @@ interface Value {
   setAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   setAfnan: React.Dispatch<React.SetStateAction<boolean>>;
   setToken : React.Dispatch<React.SetStateAction<string | null >>;
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -34,7 +34,7 @@ const ContextProvider = ({ children } : prop) => {
 
 
     const [token , setToken] = useState<string|null>(gettoken)
-    const [currentUser , setCurrentUser] = useState<User | null>(null);
+    const [currentUser , setCurrentUser] = useState<User | undefined>();
     const [openSidebar , setOpenSidebar] = useState<boolean>(true);
     const [admin , setAdmin] = useState<boolean>(isAdmin);
     const [afnan , setAfnan] = useState<boolean>(isAfnan);
