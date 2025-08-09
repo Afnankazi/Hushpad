@@ -1,9 +1,6 @@
 
 import React from "react"
 
-import { SparklesIcon } from "lucide-react"
-
-import { Badge } from "./ui/badge"
 
 import FlipLink from "./ui/text-effect-flipper"
 

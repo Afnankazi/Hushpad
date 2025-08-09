@@ -7,7 +7,7 @@ const Landingpage = () => {
   return (
     <div className="h-[200vh] bg-black">
       <Heading />
-      <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.5, duration:1 ,type:"tween" }} className="flex flex-col lg:flex-row  gap-6 w-full justify-center">
+      <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3, duration:1 , ease:"easeIn" }} className="flex flex-col lg:flex-row  gap-6 w-full justify-center">
         <CardSpot />
       </motion.div>
     </div>
