@@ -35,7 +35,7 @@ const CreateNote: React.FC = () => {
   );
 
   const [loading, setLoading] = useState<boolean>(
-    false
+        false
   );
 
   const handleProcedureContentChange = (

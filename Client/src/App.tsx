@@ -8,6 +8,7 @@ import MyNotes from './pages/MyNotes'
 import CreateNotes from "./pages/CreateNotes"
 import Protectedroutes from './Components/Protectedroutes'
 import Contact from './pages/Contact'
+import About from './pages/About'
 function App() {
   return (
     <div className="dark">
@@ -18,6 +19,7 @@ function App() {
           <Route path='/login' element={<Login/>}  />
           <Route path='/signup' element={<Signup/>}  />
           <Route path='/contact' element={<Contact/>}  />
+           <Route path='/about' element={<About/>}  />
 
 
 
