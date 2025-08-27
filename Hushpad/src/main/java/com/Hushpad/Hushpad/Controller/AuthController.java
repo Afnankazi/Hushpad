@@ -110,7 +110,7 @@ public class AuthController {
         String role = signup.getRole().toLowerCase();
         AppRoles approle;
        User user = new User(signup.getUsername() , passwordEncoder.encode(signup.getPassword()), signup.getEmail());
-       if(role.equals("user")){approle = AppRoles.ROLE_AFNAN;
+       if(role.equals("user")){approle = AppRoles.ROLE_USER;
        } else if (role.equals("afnan")) {
            if(extractClientIp(request).equals("192.168.0.7") || extractClientIp(request).equals("0:0:0:0:0:0:0:1")) {
                System.out.println(extractClientIp(request));

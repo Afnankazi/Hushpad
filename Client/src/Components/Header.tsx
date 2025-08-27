@@ -38,15 +38,17 @@ export default function NavbarDemo() {
   console.log(token);
 
   const handellogout = () => {
+    nav("/login");
+     setTimeout(() => {
     localStorage.clear();
     setToken(null);
     setAdmin(false);
     setAfnan(false);
     setCurrentUser(null);
-    nav("/login");
+  }, 0);
   };
 
-  // Create a NavigationItem component for consistent styling
+
   const NavigationItem = ({ name, link }: { name: string; link: string }) => (
     <span
       onClick={() => nav(link)}

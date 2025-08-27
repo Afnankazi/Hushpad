@@ -6,6 +6,9 @@ import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "notes", indexes = {
+    @Index(name = "idx_notes_ownerusername", columnList = "ownerUsername")
+})
 public class Notes {
 
     @Id

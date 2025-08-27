@@ -29,6 +29,7 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
 
 import javax.sql.DataSource;
 import java.time.LocalDate;
@@ -66,8 +67,10 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf
+         http.cors(withDefaults()).csrf(csrf -> csrf
                 .ignoringRequestMatchers("/api/auth/public/**")
+                .ignoringRequestMatchers("/api/csrf-token")
+                 .ignoringRequestMatchers("/api/notes")
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()));
         http.authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
@@ -83,6 +86,7 @@ public class SecurityConfig {
 
        http.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler));
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAfter(new CsrfTokenResponseHeaderFilter(), CsrfFilter.class);
 //        http.addFilterBefore(new CoustomLoggingFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers(headers -> headers
                 .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin

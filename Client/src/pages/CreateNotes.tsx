@@ -6,6 +6,10 @@ import "react-quill/dist/quill.snow.css";
 
 import "../CreateNote.css";
 import Animate from "../Components/Animate";
+import toast from "react-hot-toast";
+import api from "../Service/api";
+import { context } from "@react-three/fiber";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const CreateNote: React.FC = () => {
 
@@ -35,9 +39,9 @@ const CreateNote: React.FC = () => {
     ""
   );
 
-  const [loading, setLoading] = useState<boolean>(
-        false
-  );
+  const nav = useNavigate();
+
+ 
 
   const handleProcedureContentChange = (
     content: string,
@@ -48,6 +52,22 @@ const CreateNote: React.FC = () => {
     setCode(content);
 
   };
+
+  function handelSubmit(){
+
+      if (!code || code === "<p><br></p>") {
+    toast.error("Cannot create an empty note.");
+    return; 
+  }
+
+    const data = {content:code}
+    const req = api.post("/notes",data);
+    toast.promise(req,{
+      loading:"Creating Note....",
+      success:"Note Created Successfully",
+      error:(error)=>error || "Error Creating Note"
+    }).then(()=>nav("/notes"))
+  }
   
   return (
     <div className="min-h-screen w-full bg-black">
@@ -66,10 +86,10 @@ const CreateNote: React.FC = () => {
           
         </div>
         <Animate time={1}>
-        <button  onClick={()=>nav("/create-notes")} className="mt-6 relative inline-flex h-12 overflow-hidden rounded-full p-[1px]  focus:outline-none focus:ring-1 focus:ring-slate-400 focus:ring-offset-1 focus:ring-offset-slate-50">
+        <button  onClick={handelSubmit} className="mt-6 relative inline-flex h-12 overflow-hidden rounded-full p-[1px]  focus:outline-none focus:ring-1 focus:ring-slate-400 focus:ring-offset-1 focus:ring-offset-slate-50">
         <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
         <span className="inline-flex h-full w-45 cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-             { loading ? <span className="w-7 h-7 rounded-full border-4 border-solid border-indigo-800 border-t-transparent animate-spin pointer-events-none" />: "Create Note"}
+             Create Note
         </span>
       </button>
       </Animate>
