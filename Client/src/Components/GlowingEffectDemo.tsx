@@ -6,32 +6,21 @@ import { useEffect, useState } from "react";
 import api from "../Service/api";
 import toast from "react-hot-toast";
 import { da } from "zod/v4/locales";
-import ReactMarkdown from "react-markdown";
-export function GlowingEffectDemo() {
-  interface Notes {
+import "../styles/note-content.css";
+
+ interface Notes {
     id: number;
     content: string;
     ownerUsername: string;
   }
 
-  const [notes, setNotes] = useState<Notes[]>([]);
-  useEffect(() => {
-    const getNotes = async () => {
-      try {
-        const { data } = await toast.promise(api.get("/notes"), {
-          loading: "Getting your notes....",
-          success: "Your notes are here!",
-          error: "Something went wrong",
-        });
-        setNotes(data);
-        console.log(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+interface props{
+  notes : Notes[]
+}
+export function GlowingEffectDemo( {notes} : props) {
+ 
 
-    getNotes();
-  }, []);
+
 
   return (
     <ul className="flex flex-wrap gap-6 xl:max-h-[100em] m-5 xl:ml-60 no-scroll">
@@ -63,11 +52,11 @@ const GridItem = ({ icon, description }: GridItemProps) => {
           proximity={64}
           inactiveZone={0.01}
         />
-        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D] no-scrollbar">
+        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#404040] no-scrollbar">
           <div className="relative flex flex-1 flex-col justify-between gap-3">
             <div className="space-y-3">
               <div 
-                className=""
+                className="quill-content"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
               <div className="w-fit rounded-lg border border-gray-600 p-2 absolute bottom-2 right-2 ">

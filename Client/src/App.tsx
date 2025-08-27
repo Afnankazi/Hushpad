@@ -37,14 +37,14 @@ function App() {
                 duration: Infinity,
               },
               success: {
-                duration: 3000,
+                duration: 2000,
                 iconTheme: {
                   primary: 'blue',
                   secondary: 'black',
                 },
               },
               error: {
-                duration: 3000,
+                duration: 2000,
                 iconTheme: {
                   primary: 'red',
                   secondary: 'black',

@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface NotesRepository extends JpaRepository<Notes, Long> {
-
     Optional<List<Notes>> findByOwnerUsername(String ownerUsername);
-
 }

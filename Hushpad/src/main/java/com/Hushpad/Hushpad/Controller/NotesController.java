@@ -4,6 +4,7 @@ package com.Hushpad.Hushpad.Controller;
 import com.Hushpad.Hushpad.Service.NoteServiceImp;
 import com.Hushpad.Hushpad.model.Notes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,7 +26,7 @@ public class NotesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Notes>> GetAllNotes(@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<List<Notes>> getAllNotes(@AuthenticationPrincipal UserDetails userDetails) {
         return new ResponseEntity<>(noteService.findAllNotes(userDetails.getUsername()), HttpStatus.OK);
     }
 
